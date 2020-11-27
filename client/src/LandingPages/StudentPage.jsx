@@ -5,39 +5,39 @@ import AddPayment from '../Components/AddPayment';
 import { Box, Button, CircularProgress } from '@material-ui/core';
 import Axios from 'axios'
 
-const StudentPage = () => {
+const EmployeePage = () => {
   const { id } = useParams()
-  const [student, setStudent] = useState({})
-  const [testModal, setTestModal] = useState(false)
+  const [employee, setEmployee] = useState({})
+  const [paymentModal, setPaymentModal] = useState(false)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     setLoading(true)
     Axios.get(`http://localhost:5000/harsha/${id}`)
       .then((res) => {
-        setStudent(res.data);
+        setEmployee(res.data);
         setLoading(false)
       })
       .catch(error => {
         console.log(error.message);
         setLoading(false)
       })
-  }, [testModal, id])
+  }, [paymentModal, id])
 
-  console.log(student);
+  console.log(employee);
   return (
     <>
-      <AddPayment open={testModal} {...student} handleClose={() => setTestModal(false)} />
+      <AddPayment open={paymentModal} {...employee} handleClose={() => setPaymentModal(false)} />
 
       <Box display='flex' justifyContent='flex-end' margin='1rem' >
-        <Button color='secondary' onClick={() => setTestModal(true)} variant='contained' >Add Test</Button>
+        <Button color='secondary' onClick={() => setPaymentModal(true)} variant='contained' >Add Payments</Button>
       </Box>
       <Box display='flex' justifyContent="center" >
         {loading && <CircularProgress />}
       </Box>
-      {student && student.length > 0 && student?.map(test => <PaymentCard key={test._id} {...test} />)}
+      {employee && employee.length > 0 && employee?.map(test => <PaymentCard key={test._id} {...test} />)}
     </>
   )
 }
 
-export default StudentPage;
+export default EmployeePage;

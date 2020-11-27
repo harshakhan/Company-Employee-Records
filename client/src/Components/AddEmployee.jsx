@@ -65,7 +65,7 @@ export default function AddEmployee({ open, handleClose }) {
                 </FormControl>
                 <TextField label='Joining Date' value={joining_date} name="age" onChange={handleChangeJoinDate} type='number' min={1} max={150} placeholder='Enter date name here!' variant='outlined' required />
                 {/* <TextField value={joining_date} name="age" onChange={handleChangeJoinDate} type='date'  variant='outlined' required /> */}
-                <Button variant='contained' color='secondary' type='submit'>Add</Button>
+                <Button variant='contained' style={{background:'#FFA726', color:'white'}} type='submit'>Add</Button>
                 <Button variant='contained' color='default' onClick={handleClose}>Cancel</Button>
             </Form>
         </CustomModal>

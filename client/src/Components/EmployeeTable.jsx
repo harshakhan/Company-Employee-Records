@@ -23,11 +23,11 @@ function CustomLoadingOverlay() {
   );
 }
 
-export default function EmployeeTable({ students = [], loading, limit, totalResults, totalPages, page, setPage }) {
+export default function EmployeeTable({ employee = [], loading, limit, totalResults, totalPages, page, setPage }) {
   const history = useHistory()
   return (
     <div style={{ height: 650, width: '60%', background:'#B2DFDB', margin:'auto'   }}>
-      <DataGrid rows={students} components={{ loadingOverlay: CustomLoadingOverlay }}
+      <DataGrid rows={employee} components={{ loadingOverlay: CustomLoadingOverlay }}
        onRowClick={value => {
           window.localStorage.setItem('employeeId', value.data._id)
           history.push(value.data._id)  

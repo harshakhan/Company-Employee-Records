@@ -40,8 +40,8 @@ const BootstrapInput = withStyles((theme) => ({
 }))(InputBase);
 
 const HomePage = () => {
-  const [addStudentModal, setAddStudentModal] = useState(false)
-  const [students, setStudents] = useState({})
+  const [addEmployeeModal, setAddEmployeeModal] = useState(false)
+  const [employee, setEmployee] = useState({})
   const [page, setPage] = useState(1)
   const [limit, setLimit] = useState(10)
   const [loading, setLoading] = useState(false)
@@ -60,17 +60,17 @@ const HomePage = () => {
       params: payload
     })
       .then(res => {
-        setStudents(res.data)
+        setEmployee(res.data)
         setLoading(false)
       }).catch(error => {
         console.log(error.message);
         setLoading(false)
       })
-  }, [addStudentModal, page, query, limit])
+  }, [addEmployeeModal, page, query, limit])
 
   return (
     <>
-      <AddEmployee open={addStudentModal} handleClose={() => setAddStudentModal(false)} />
+      <AddEmployee open={addEmployeeModal} handleClose={() => setAddEmployeeModal(false)} />
 
       <Box display='flex' justifyContent='space-between' alignItems='center' margin='1rem' >
         <Box display='flex' alignItems='center'>
@@ -94,13 +94,13 @@ const HomePage = () => {
           </FormControl>
 
         </Box>
-        <Button style={{background:'#004D40', color:'white'}} onClick={() => setAddStudentModal(true)} variant='contained' >Add Employee</Button>
+        <Button style={{background:'#004D40', color:'white'}} onClick={() => setAddEmployeeModal(true)} variant='contained' >Add Employee</Button>
       </Box>
       {
         <Box padding='1rem 2rem'>
-          <EmployeeTable page={page} loading={loading} totalPages={students?.totalPages} 
-          totalResults={students?.totalResults} limit={limit} setPage={setPage} 
-          students={students?.data?.map((item, i) => ({ ...item, id: i }))} 
+          <EmployeeTable page={page} loading={loading} totalPages={employee?.totalPages} 
+          totalResults={employee?.totalResults} limit={limit} setPage={setPage} 
+          employee={employee?.data?.map((item, i) => ({ ...item, id: i }))} 
           />
         </Box>
       }
