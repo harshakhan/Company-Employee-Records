@@ -1,0 +1,67 @@
+import {
+    LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS,
+    REGISTER_FAILURE, REGISTER_REQUEST, REGISTER_SUCCESS, LOGOUT
+  } from './actionTypes';
+  
+  const initState = {
+    auth: false,
+    email: "",
+    name: ""
+  }
+  
+  const reducers = (state = initState, { type, payload }) => {
+    switch (type) {
+      case LOGIN_REQUEST:
+        return {
+          ...state, 
+          loading: true, 
+          error: false 
+        }
+      case LOGIN_SUCCESS:
+        return {
+          ...state, 
+          ...payload, 
+          auth: true, 
+          loading: false, 
+          error: false 
+        }
+      case LOGIN_FAILURE:
+        return { 
+          ...state, 
+          loading: false, 
+          error: true, 
+          message: payload 
+        }
+
+      case LOGOUT:
+        return {
+          ...state, 
+          auth: false 
+        }
+      case REGISTER_REQUEST:
+        return { 
+          ...state, 
+          loading: true, 
+          error: false 
+        }
+      case REGISTER_SUCCESS:
+        return { 
+          ...state, 
+          ...payload, 
+          loading: false, 
+          error: false, 
+          message: payload.message 
+        }
+      case REGISTER_FAILURE:
+        return { 
+          ...state, 
+          loading: false, 
+          error: true, 
+          message: payload 
+        }
+      default:
+        return state
+    }
+  }
+  
+  export default reducers;
