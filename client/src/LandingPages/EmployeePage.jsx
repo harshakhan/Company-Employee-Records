@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import PaymentCard from '../Components/PaymentCard';
 import AddPayment from '../Components/AddPayment';
 import { Box, Button, CircularProgress } from '@material-ui/core';
-import Axios from 'axios'
+import Axios from 'axios';
 
 const EmployeePage = () => {
   const { id } = useParams()
@@ -28,7 +28,6 @@ const EmployeePage = () => {
   return (
     <>
       <AddPayment open={paymentModal} {...employee} handleClose={() => setPaymentModal(false)} />
-
       <Box display='flex' justifyContent='flex-end' margin='1rem' >
         <Button color='secondary' onClick={() => setPaymentModal(true)} variant='contained' >Add Payments</Button>
       </Box>

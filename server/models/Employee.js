@@ -5,13 +5,13 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         required: true,
         min: 4,
-        max: 255,
+        max: 265,
     },
     department: {
         type: String,
         required: true,
-        min: 1,
-        max: 255
+        min: 2,
+        max: 265
     },
     gender: {
         type: String,

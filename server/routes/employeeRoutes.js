@@ -22,7 +22,6 @@ router.get('/', async (req, res) => {
 
     page = Number(page)
     limit = Number(limit)
-
     const startIndx = (page - 1) * limit
 
     try {
@@ -53,15 +52,13 @@ router.post('/addPayment', async (req, res) => {
         Employee.update({ _id: req.body.id }, {
             $push: {
                 payment: {
-                    // name: req.body.name,
-                    // subject: req.body.subject,
                     amount: req.body.amount,
                     date: req.body.date,
                 }
             }
         })
         .then(resp=>{
-            res.json({message: "Added Amount"})
+            res.json({message: "Added the Amount"})
         })
         
     } catch (error) {
